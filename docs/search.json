@@ -1,343 +1,343 @@
 [
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#what-is-postgresql",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#what-is-postgresql",
+    "objectID": "introduction-to-postgresql/index.html#what-is-postgresql",
+    "href": "introduction-to-postgresql/index.html#what-is-postgresql",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "What is PostgreSQL?",
     "text": "What is PostgreSQL?\n\n\nPostgreSQL is a powerful, open-source Relational Database Management System (RDBMS).\nKnown for its focus on:\n\nStandards compliance (SQL:2016).\nExtensibility (custom types, functions, operators).\nReliability (ACID transactions, WAL)."
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#key-features",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#key-features",
+    "objectID": "introduction-to-postgresql/index.html#key-features",
+    "href": "introduction-to-postgresql/index.html#key-features",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "Key Features",
     "text": "Key Features\n\nMulti-Version Concurrency Control (MVCC).\nNative JSON/JSONB support for semi-structured data.\nAdvanced indexing options (B-Tree, GiST, GIN, BRIN).\nComprehensive extensions like PostGIS for spatial data.\n\nFact: PostgreSQL is used by major companies like Instagram, Apple, and Reddit."
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#key-components",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#key-components",
+    "objectID": "introduction-to-postgresql/index.html#key-components",
+    "href": "introduction-to-postgresql/index.html#key-components",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "Key Components",
     "text": "Key Components\n\nClient-Server Model:\n\npsql: Command-line client.\nAPIs: JDBC, ODBC, etc.\n\nPostmaster Process:\n\nManages database sessions.\n\nShared Buffers:\n\nMemory caching for faster reads/writes.\n\nWAL (Write-Ahead Logging):\n\nEnsures durability and crash recovery."
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#simplified-flow",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#simplified-flow",
+    "objectID": "introduction-to-postgresql/index.html#simplified-flow",
+    "href": "introduction-to-postgresql/index.html#simplified-flow",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "Simplified Flow:",
     "text": "Simplified Flow:\n\nClient sends query ➡️\nPostmaster receives and parses ➡️\nExecutor processes ➡️\nStorage engine writes to disk.\n\n\nExample: When you execute:\n\nSELECT * FROM users WHERE id = 1;"
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#data-integrity-and-acid-compliance",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#data-integrity-and-acid-compliance",
+    "objectID": "introduction-to-postgresql/index.html#data-integrity-and-acid-compliance",
+    "href": "introduction-to-postgresql/index.html#data-integrity-and-acid-compliance",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "1. Data Integrity and ACID Compliance",
     "text": "1. Data Integrity and ACID Compliance\n\nEnsures atomicity, consistency, isolation, and durability in transactions.\n\nExample: A Bank Transfer\nBEGIN;\n\nUPDATE accounts\nSET balance = balance - 500\nWHERE account_id = 1;\n\nUPDATE accounts\nSET balance = balance + 500\nWHERE account_id = 2;\n\nCOMMIT;"
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#extensibility",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#extensibility",
+    "objectID": "introduction-to-postgresql/index.html#extensibility",
+    "href": "introduction-to-postgresql/index.html#extensibility",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "2. Extensibility",
     "text": "2. Extensibility\nAllows custom types, operators, and functions.\nSupports languages like PL/pgSQL, Python, and C.\nExample: Custom Function\nCREATE FUNCTION get_full_name(first_name TEXT, last_name TEXT)\nRETURNS TEXT AS $$\nBEGIN\n  RETURN first_name || ' ' || last_name;\nEND;\n$$ LANGUAGE plpgsql;\n\nSELECT get_full_name('John', 'Doe'); -- Output: John Doe"
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#json-and-jsonb-support",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#json-and-jsonb-support",
+    "objectID": "introduction-to-postgresql/index.html#json-and-jsonb-support",
+    "href": "introduction-to-postgresql/index.html#json-and-jsonb-support",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "3. JSON and JSONB Support",
     "text": "3. JSON and JSONB Support\nStores unstructured data directly in the database.\nExample: JSON Querying\nCREATE TABLE orders (\n    id SERIAL PRIMARY KEY,\n    order_data JSONB\n);\n\nINSERT INTO orders (order_data)\nVALUES ('{\"product\": \"Laptop\", \"quantity\": 2, \"price\": 1200}');\n\nSELECT order_data-&gt;&gt;'product' AS product FROM orders; -- Output: Laptop"
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#what-is-indexing",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#what-is-indexing",
+    "objectID": "introduction-to-postgresql/index.html#what-is-indexing",
+    "href": "introduction-to-postgresql/index.html#what-is-indexing",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "What is Indexing?",
     "text": "What is Indexing?\n\nAn index speeds up data retrieval by reducing disk I/O.\nPostgreSQL offers multiple indexing techniques for various use cases."
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#common-index-types",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#common-index-types",
+    "objectID": "introduction-to-postgresql/index.html#common-index-types",
+    "href": "introduction-to-postgresql/index.html#common-index-types",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "Common Index Types",
     "text": "Common Index Types\n\nB-Tree Index: Default for equality/inequality queries.\n\nExample:\nCREATE INDEX idx_users_name ON users(name);\n\nGIN Index: Optimized for searching within arrays or JSONB.\n\nExample:\nCREATE INDEX idx_orders_data ON orders USING GIN (order_data);\n\nBRIN Index: Efficient for large, sequential data.\n\nExample:\nCREATE INDEX idx_logs_date ON logs USING BRIN (log_date);"
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#popular-extensions",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#popular-extensions",
+    "objectID": "introduction-to-postgresql/index.html#popular-extensions",
+    "href": "introduction-to-postgresql/index.html#popular-extensions",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "Popular Extensions",
     "text": "Popular Extensions\n\n\nPostGIS: Geospatial queries and analysis.\n\npg_partman: Automated table partitioning.\n\nTimescaleDB: Time-series data management.\n\npg_stat_statements: Query performance tracking."
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#e-commerce",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#e-commerce",
+    "objectID": "introduction-to-postgresql/index.html#e-commerce",
+    "href": "introduction-to-postgresql/index.html#e-commerce",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "1. E-commerce",
     "text": "1. E-commerce\n\nManages product catalogs, inventory, and transactions.\n\nExample:\n\nAmazon-like systems with millions of products."
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#gis-and-mapping",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#gis-and-mapping",
+    "objectID": "introduction-to-postgresql/index.html#gis-and-mapping",
+    "href": "introduction-to-postgresql/index.html#gis-and-mapping",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "2. GIS and Mapping",
     "text": "2. GIS and Mapping\n\nUses PostGIS for geospatial data.\n\nExample:\nSELECT name FROM locations\nWHERE ST_Within(\n  geom, ST_Buffer(ST_Point(10, 10), 5)\n);"
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#analytics-and-big-data",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#analytics-and-big-data",
+    "objectID": "introduction-to-postgresql/index.html#analytics-and-big-data",
+    "href": "introduction-to-postgresql/index.html#analytics-and-big-data",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "3. Analytics and Big Data",
     "text": "3. Analytics and Big Data\n\nWorks with time-series databases (e.g., TimescaleDB).\n\nExample: Monitoring system performance or IoT sensor data."
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#postgresql-vs.-other-databases",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#postgresql-vs.-other-databases",
+    "objectID": "introduction-to-postgresql/index.html#postgresql-vs.-other-databases",
+    "href": "introduction-to-postgresql/index.html#postgresql-vs.-other-databases",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "PostgreSQL vs. Other Databases",
     "text": "PostgreSQL vs. Other Databases\n\n\n\nFeature\nPostgreSQL\nMySQL\nSQLite\n\n\n\n\nACID Compliance\nYes\nYes\nPartial\n\n\nJSON Support\nYes (JSONB)\nYes\nLimited\n\n\nExtensibility\nHigh\nLow\nLow\n\n\nGeospatial Support\nPostGIS (Advanced)\nBasic\nNone\n\n\nScalability\nHorizontal & Vertical\nVertical\nLimited"
   },
   {
-    "objectID": "introduction-to-postgresql/introduction-to-postgresql.html#why-choose-postgresql",
-    "href": "introduction-to-postgresql/introduction-to-postgresql.html#why-choose-postgresql",
+    "objectID": "introduction-to-postgresql/index.html#why-choose-postgresql",
+    "href": "introduction-to-postgresql/index.html#why-choose-postgresql",
     "title": "Introduction to PostgreSQL 🐘",
     "section": "Why Choose PostgreSQL?",
     "text": "Why Choose PostgreSQL?\n\n\nOpen-source and free.\n\nWide range of applications: E-commerce, analytics, GIS.\n\nActively maintained with a strong community.\n\n\n\n\n\nhttps://learngisonline.com/postgis/"
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#relational-database",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#relational-database",
+    "objectID": "relational-vs-nonrelational/index.html#relational-database",
+    "href": "relational-vs-nonrelational/index.html#relational-database",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Relational Database",
     "text": "Relational Database\n\nOrganizes data into tables (rows and columns).\nUses Structured Query Language (SQL) for querying.\nImplements relationships using:\n\nPrimary Keys: Unique identifiers.\nForeign Keys: Links between tables."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#examples",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#examples",
+    "objectID": "relational-vs-nonrelational/index.html#examples",
+    "href": "relational-vs-nonrelational/index.html#examples",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Examples",
     "text": "Examples\n\nMySQL\nPostgreSQL\nOracle Database\nMicrosoft SQL Server"
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#non-relational-database",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#non-relational-database",
+    "objectID": "relational-vs-nonrelational/index.html#non-relational-database",
+    "href": "relational-vs-nonrelational/index.html#non-relational-database",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Non-Relational Database",
     "text": "Non-Relational Database\n\nAlso known as NoSQL databases.\nFlexible data models:\n\nDocument-based, Key-Value pairs, Graphs, or Wide-Column Stores.\n\nDesigned for scalability and unstructured data."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#examples-1",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#examples-1",
+    "objectID": "relational-vs-nonrelational/index.html#examples-1",
+    "href": "relational-vs-nonrelational/index.html#examples-1",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Examples",
     "text": "Examples\n\nMongoDB (Document-based)\nRedis (Key-Value store)\nNeo4j (Graph database)\nCassandra (Wide-column store)"
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#relational-vs.-non-relational-key-differences",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#relational-vs.-non-relational-key-differences",
+    "objectID": "relational-vs-nonrelational/index.html#relational-vs.-non-relational-key-differences",
+    "href": "relational-vs-nonrelational/index.html#relational-vs.-non-relational-key-differences",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Relational vs. Non-Relational: Key Differences",
     "text": "Relational vs. Non-Relational: Key Differences\n\n\n\n\n\n\n\n\nAspect\nRelational\nNon-Relational\n\n\n\n\nData Model\nTables\nFlexible (JSON, Graph, etc.)\n\n\nQuery Language\nSQL\nVaries (e.g., NoSQL, APIs)\n\n\nScalability\nVertical\nHorizontal\n\n\nSchema\nFixed, predefined\nDynamic, flexible\n\n\nUse Cases\nStructured, transactional data\nUnstructured or big data"
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#advantages-of-relational-databases",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#advantages-of-relational-databases",
+    "objectID": "relational-vs-nonrelational/index.html#advantages-of-relational-databases",
+    "href": "relational-vs-nonrelational/index.html#advantages-of-relational-databases",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Advantages of Relational Databases",
     "text": "Advantages of Relational Databases\n\nWell-structured and normalized data.\nStrong data integrity and consistency.\nACID compliance for reliable transactions.\nWidely supported with mature tools and ecosystems."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#advantages-of-non-relational-databases",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#advantages-of-non-relational-databases",
+    "objectID": "relational-vs-nonrelational/index.html#advantages-of-non-relational-databases",
+    "href": "relational-vs-nonrelational/index.html#advantages-of-non-relational-databases",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Advantages of Non-Relational Databases",
     "text": "Advantages of Non-Relational Databases\n\nHandles large volumes of unstructured data.\nHighly scalable with distributed architecture.\nFlexible schema allows rapid development.\nIdeal for use cases like real-time analytics and IoT."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#relational-databases",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#relational-databases",
+    "objectID": "relational-vs-nonrelational/index.html#relational-databases",
+    "href": "relational-vs-nonrelational/index.html#relational-databases",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Relational Databases:",
     "text": "Relational Databases:\n\nBanking and financial systems.\nERP and CRM platforms.\nE-commerce platforms."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#non-relational-databases",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#non-relational-databases",
+    "objectID": "relational-vs-nonrelational/index.html#non-relational-databases",
+    "href": "relational-vs-nonrelational/index.html#non-relational-databases",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Non-Relational Databases:",
     "text": "Non-Relational Databases:\n\nSocial media applications.\nBig data analytics.\nIoT and real-time streaming."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#choose-relational",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#choose-relational",
+    "objectID": "relational-vs-nonrelational/index.html#choose-relational",
+    "href": "relational-vs-nonrelational/index.html#choose-relational",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Choose Relational:",
     "text": "Choose Relational:\n\nWhen data is structured.\nNeed strong consistency.\nComplex querying is required."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#choose-non-relational",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#choose-non-relational",
+    "objectID": "relational-vs-nonrelational/index.html#choose-non-relational",
+    "href": "relational-vs-nonrelational/index.html#choose-non-relational",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Choose Non-Relational:",
     "text": "Choose Non-Relational:\n\nHandling unstructured or semi-structured data.\nHigh scalability is crucial.\nUse cases like caching or big data analytics."
   },
   {
-    "objectID": "relational-vs-nonrelational/relational-vs-nonrelational.html#conclusion",
-    "href": "relational-vs-nonrelational/relational-vs-nonrelational.html#conclusion",
+    "objectID": "relational-vs-nonrelational/index.html#conclusion",
+    "href": "relational-vs-nonrelational/index.html#conclusion",
     "title": "Relational vs. Non-Relational Databases",
     "section": "Conclusion",
     "text": "Conclusion\n\nRelational Databases: Best for structured, transactional data.\nNon-Relational Databases: Flexible, scalable, and suited for modern data needs.\nThe choice depends on:\n\nData structure.\nScale and performance needs.\nSpecific application requirements.\n\n\n\n\n\nhttps://learngisonline.com/postgis/"
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#what-is-postgis",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#what-is-postgis",
+    "objectID": "introduction-to-postgis/index.html#what-is-postgis",
+    "href": "introduction-to-postgis/index.html#what-is-postgis",
     "title": "Introduction to PostGIS 🐘",
     "section": "What is PostGIS?",
     "text": "What is PostGIS?\n\nPostGIS is an extension of PostgreSQL for spatial data management.\nProvides geographic objects to PostgreSQL.\nEnables advanced spatial queries like intersections, buffers, and distances."
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#key-benefits",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#key-benefits",
+    "objectID": "introduction-to-postgis/index.html#key-benefits",
+    "href": "introduction-to-postgis/index.html#key-benefits",
     "title": "Introduction to PostGIS 🐘",
     "section": "Key Benefits",
     "text": "Key Benefits\n\nGIS Functionality: Brings Geographic Information System (GIS) capabilities to PostgreSQL.\n\nSpatial Indexing: Optimized for geospatial queries.\n\nIntegration: Works seamlessly with GIS tools like QGIS and GeoServer."
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#spatial-data-types",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#spatial-data-types",
+    "objectID": "introduction-to-postgis/index.html#spatial-data-types",
+    "href": "introduction-to-postgis/index.html#spatial-data-types",
     "title": "Introduction to PostGIS 🐘",
     "section": "1. Spatial Data Types",
     "text": "1. Spatial Data Types\n\nSupports geometry and geography data types.\nExample:\nCREATE TABLE locations (\n    id SERIAL PRIMARY KEY,\n    name TEXT,\n    geom GEOMETRY(Point, 4326)\n);"
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#spatial-functions",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#spatial-functions",
+    "objectID": "introduction-to-postgis/index.html#spatial-functions",
+    "href": "introduction-to-postgis/index.html#spatial-functions",
     "title": "Introduction to PostGIS 🐘",
     "section": "2. Spatial Functions",
     "text": "2. Spatial Functions\n\nExamples:\n\nST_Distance: Calculates the distance between two points.\nST_Within: Checks if a geometry is within another.\n\nSELECT ST_Distance(\n    ST_Point(10, 10),\n    ST_Point(15, 15)\n);\nFinds all cities within 5 km of a given point.\nSELECT name FROM cities\nWHERE ST_DWithin(\n  location, ST_Point(77.5946, 12.9716)::geography, 5000\n);\n\n3. Spatial Indexing\n\nGiST Index: Generalized index for geometry data.\nImproves performance of spatial queries.\n\nCREATE INDEX idx_cities_location\nON cities USING GIST(location);"
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#urban-planning",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#urban-planning",
+    "objectID": "introduction-to-postgis/index.html#urban-planning",
+    "href": "introduction-to-postgis/index.html#urban-planning",
     "title": "Introduction to PostGIS 🐘",
     "section": "1. Urban Planning",
     "text": "1. Urban Planning\n\nAnalyze proximity of facilities like hospitals and schools.\n\nSELECT name FROM parks\nWHERE ST_DWithin(\n    geom, ST_Point(10, 10)::geometry, 2000\n);"
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#disaster-management",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#disaster-management",
+    "objectID": "introduction-to-postgis/index.html#disaster-management",
+    "href": "introduction-to-postgis/index.html#disaster-management",
     "title": "Introduction to PostGIS 🐘",
     "section": "2. Disaster Management",
     "text": "2. Disaster Management\n\nIdentify vulnerable areas during floods or earthquakes."
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#logistics",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#logistics",
+    "objectID": "introduction-to-postgis/index.html#logistics",
+    "href": "introduction-to-postgis/index.html#logistics",
     "title": "Introduction to PostGIS 🐘",
     "section": "3. Logistics",
     "text": "3. Logistics\n\nRoute optimization and tracking using spatial queries.\n\nSELECT ST_AsText(ST_LineMerge(route_geom))\nFROM routes\nWHERE vehicle_id = 101;"
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#raster-data-support",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#raster-data-support",
+    "objectID": "introduction-to-postgis/index.html#raster-data-support",
+    "href": "introduction-to-postgis/index.html#raster-data-support",
     "title": "Introduction to PostGIS 🐘",
     "section": "Raster Data Support",
     "text": "Raster Data Support\n\nRaster data is stored as a grid of cells.\nEach cell contains a value representing the elevation.\nPostGIS supports raster data using the Raster Data Type (RDT).\n\nSELECT ST_Value(rast, ST_Point(10, 10))\nFROM elevation_data;"
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#topology-preserving-operations",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#topology-preserving-operations",
+    "objectID": "introduction-to-postgis/index.html#topology-preserving-operations",
+    "href": "introduction-to-postgis/index.html#topology-preserving-operations",
     "title": "Introduction to PostGIS 🐘",
     "section": "Topology Preserving Operations",
     "text": "Topology Preserving Operations\n\nTopology preserving operations are used to analyze and manipulate spatial data.\nExamples:\n\nUnion: Combines two geometries into one.\nDifference: Removes parts of one geometry from another.\nIntersection: Finds the common parts of two geometries."
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#tools-and-libraries",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#tools-and-libraries",
+    "objectID": "introduction-to-postgis/index.html#tools-and-libraries",
+    "href": "introduction-to-postgis/index.html#tools-and-libraries",
     "title": "Introduction to PostGIS 🐘",
     "section": "Tools and Libraries",
     "text": "Tools and Libraries\n\nQGIS: Visualization and analysis.\n\nGeoServer: Web mapping services.\n\nLeaflet.js: Interactive maps in web applications."
   },
   {
-    "objectID": "introduction-to-postgis/introduction-to-postgis.html#step-by-step",
-    "href": "introduction-to-postgis/introduction-to-postgis.html#step-by-step",
+    "objectID": "introduction-to-postgis/index.html#step-by-step",
+    "href": "introduction-to-postgis/index.html#step-by-step",
     "title": "Introduction to PostGIS 🐘",
     "section": "Step-by-Step",
     "text": "Step-by-Step\n\nInstall PostGIS:\nCREATE EXTENSION postgis;\nLoad Data:\nINSERT INTO locations (name, geom)\nVALUES ('Park', ST_Point(12.9716, 77.5946));\nQuery Data:\nSELECT name FROM locations\nWHERE ST_Within(\n    geom, ST_Buffer(ST_Point(12.9716, 77.5946), 10)\n);\n\n\n\n\nhttps://learngisonline.com/postgis/"
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#what-is-rdbms",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#what-is-rdbms",
+    "objectID": "introduction-to-rdbms/index.html#what-is-rdbms",
+    "href": "introduction-to-rdbms/index.html#what-is-rdbms",
     "title": "Introduction to RDBMS 🗃️",
     "section": "What is RDBMS?",
     "text": "What is RDBMS?\nA Relational Database Management System (RDBMS) is software designed to store, manage, and retrieve data in a structured format using tables."
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#example-table",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#example-table",
+    "objectID": "introduction-to-rdbms/index.html#example-table",
+    "href": "introduction-to-rdbms/index.html#example-table",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Example Table",
     "text": "Example Table\n\nStoring student information in table named student\n\n\n\n\nid\nName\nAge\nGender\nClass\n\n\n\n\n1\nJohn\n18\nMale\n10\n\n\n2\nJane\n18\nFemale\n10\n\n\n3\nMary\n19\nFemale\n10\n\n\n4\nDavid\n20\nMale\n10"
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#example-relational-table",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#example-relational-table",
+    "objectID": "introduction-to-rdbms/index.html#example-relational-table",
+    "href": "introduction-to-rdbms/index.html#example-relational-table",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Example Relational Table",
     "text": "Example Relational Table\n\nStoring students marks in table as student_marks\n\n\n\n\nstudent_id\nsubject\nmarks\n\n\n\n\n1\nMaths\n80\n\n\n1\nEnglish\n90\n\n\n2\nMaths\n70\n\n\n2\nEnglish\n80\n\n\n3\nMaths\n90\n\n\n3\nEnglish\n80"
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#why-use-rdbms",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#why-use-rdbms",
+    "objectID": "introduction-to-rdbms/index.html#why-use-rdbms",
+    "href": "introduction-to-rdbms/index.html#why-use-rdbms",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Why use RDBMS?",
     "text": "Why use RDBMS?\n\n\nEfficient data storage and retrieval.\nEasy to maintain and scale.\nSupports large volumes of data.\nEnsures data integrity through constraints.\nHandles complex queries with SQL."
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#core-components-of-rdbms",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#core-components-of-rdbms",
+    "objectID": "introduction-to-rdbms/index.html#core-components-of-rdbms",
+    "href": "introduction-to-rdbms/index.html#core-components-of-rdbms",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Core Components of RDBMS",
     "text": "Core Components of RDBMS\n\n\nTables: Structure for storing data.\nPrimary Key: Unique identifier for each record.\nForeign Key: Establishes relationships between tables.\nIndexes: Speeds up data retrieval.\nSchema: Defines database structure."
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#acid-properties-of-rdbms",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#acid-properties-of-rdbms",
+    "objectID": "introduction-to-rdbms/index.html#acid-properties-of-rdbms",
+    "href": "introduction-to-rdbms/index.html#acid-properties-of-rdbms",
     "title": "Introduction to RDBMS 🗃️",
     "section": "ACID Properties of RDBMS",
     "text": "ACID Properties of RDBMS\n\n\nAtomicity: Transactions are all or nothing.\nConsistency: Always maintains valid states.\nIsolation: Transactions don’t interfere with each other.\nDurability: Changes persist after transaction completion."
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#common-rdbms-software",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#common-rdbms-software",
+    "objectID": "introduction-to-rdbms/index.html#common-rdbms-software",
+    "href": "introduction-to-rdbms/index.html#common-rdbms-software",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Common RDBMS Software",
     "text": "Common RDBMS Software\n\nOpen-source: MySQL, PostgreSQL, SQLite.\nEnterprise: Oracle Database, Microsoft SQL Server.\nCloud: Amazon RDS, Google Cloud SQL, Azure SQL Database."
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#demo-time",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#demo-time",
+    "objectID": "introduction-to-rdbms/index.html#demo-time",
+    "href": "introduction-to-rdbms/index.html#demo-time",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Demo Time!",
     "text": "Demo Time!\n\n\nLet’s create a table in PostgreSQL.\nLet’s insert some data into the table.\nLet’s retrieve the data from the table."
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#create-a-table-in-postgresql",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#create-a-table-in-postgresql",
+    "objectID": "introduction-to-rdbms/index.html#create-a-table-in-postgresql",
+    "href": "introduction-to-rdbms/index.html#create-a-table-in-postgresql",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Create a table in PostgreSQL",
     "text": "Create a table in PostgreSQL\nCREATE TABLE student (\n  id SERIAL PRIMARY KEY,\n  name VARCHAR(50),\n  age INT,\n  gender VARCHAR(10),\n  class INT\n);\n\ncreate"
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#insert-some-data-into-the-table",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#insert-some-data-into-the-table",
+    "objectID": "introduction-to-rdbms/index.html#insert-some-data-into-the-table",
+    "href": "introduction-to-rdbms/index.html#insert-some-data-into-the-table",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Insert some data into the table",
     "text": "Insert some data into the table\nINSERT INTO student (name, age, gender, class)\nVALUES ('John', 18, 'Male', 10),\n       ('Jane', 18, 'Female', 10),\n       ('Mary', 19, 'Female', 10),\n       ('David', 20, 'Male', 10);\n\ninsert"
   },
   {
-    "objectID": "introduction-to-rdbms/introduction-to-rdbms.html#retrieve-the-data-from-the-table",
-    "href": "introduction-to-rdbms/introduction-to-rdbms.html#retrieve-the-data-from-the-table",
+    "objectID": "introduction-to-rdbms/index.html#retrieve-the-data-from-the-table",
+    "href": "introduction-to-rdbms/index.html#retrieve-the-data-from-the-table",
     "title": "Introduction to RDBMS 🗃️",
     "section": "Retrieve the data from the table",
     "text": "Retrieve the data from the table\nSELECT * FROM student;\n\n\nget\n\nhttps://learngisonline.com/postgis/"
