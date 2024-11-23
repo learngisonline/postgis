@@ -1,0 +1,89 @@
+---
+title: "Relational vs. Non-Relational Databases"
+subtitle: "Understanding Database Models"
+author: "Krishna Lodha"
+format:
+  revealjs:
+    footer: "https://learngisonline.com/postgis/"
+---
+
+## Relational Database{.incremental}
+- Organizes data into **tables** (rows and columns).
+- Uses **Structured Query Language (SQL)** for querying.
+- Implements relationships using:
+  - **Primary Keys**: Unique identifiers.
+  - **Foreign Keys**: Links between tables.
+
+## Examples
+- MySQL
+- PostgreSQL
+- Oracle Database
+- Microsoft SQL Server
+
+
+## Non-Relational Database{.incremental}
+- Also known as **NoSQL databases**.
+- Flexible data models:
+  - Document-based, Key-Value pairs, Graphs, or Wide-Column Stores.
+- Designed for scalability and unstructured data.
+
+## Examples
+- MongoDB (Document-based)
+- Redis (Key-Value store)
+- Neo4j (Graph database)
+- Cassandra (Wide-column store)
+
+## Relational vs. Non-Relational: Key Differences{.smaller}
+
+| **Aspect**       | **Relational**                 | **Non-Relational**               |
+|-------------------|--------------------------------|-----------------------------------|
+| **Data Model**    | Tables                        | Flexible (JSON, Graph, etc.)     |
+| **Query Language**| SQL                           | Varies (e.g., NoSQL, APIs)       |
+| **Scalability**   | Vertical                      | Horizontal                       |
+| **Schema**        | Fixed, predefined             | Dynamic, flexible                |
+| **Use Cases**     | Structured, transactional data| Unstructured or big data         |
+
+## Advantages of Relational Databases{.incremental}
+- Well-structured and normalized data.
+- Strong data integrity and consistency.
+- ACID compliance for reliable transactions.
+- Widely supported with mature tools and ecosystems.
+
+## Advantages of Non-Relational Databases{.incremental}
+- Handles large volumes of unstructured data.
+- Highly scalable with distributed architecture.
+- Flexible schema allows rapid development.
+- Ideal for use cases like real-time analytics and IoT.
+
+
+# Use Cases
+
+## Relational Databases:{.incremental}
+- Banking and financial systems.
+- ERP and CRM platforms.
+- E-commerce platforms.
+
+## Non-Relational Databases:{.incremental}
+- Social media applications.
+- Big data analytics.
+- IoT and real-time streaming.
+
+# When to Use What?
+
+## Choose Relational:{.incremental}
+- When data is structured.
+- Need strong consistency.
+- Complex querying is required.
+
+## Choose Non-Relational:{.incremental}
+- Handling unstructured or semi-structured data.
+- High scalability is crucial.
+- Use cases like caching or big data analytics.
+
+## Conclusion{.incremental}
+- **Relational Databases**: Best for structured, transactional data.
+- **Non-Relational Databases**: Flexible, scalable, and suited for modern data needs.
+- The choice depends on:
+  - Data structure.
+  - Scale and performance needs.
+  - Specific application requirements.

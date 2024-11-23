@@ -1,0 +1,148 @@
+---
+title: "Introduction to PostGIS 🐘"
+subtitle: "Plugin for PostgreSQL to manage spatial data"
+author: "Krishna Lodha"
+format:
+  revealjs:
+    footer: "https://learngisonline.com/postgis/"
+--- 
+
+## What is PostGIS?
+
+- **PostGIS** is an extension of PostgreSQL for **spatial data management**.
+- Provides geographic objects to PostgreSQL.
+- Enables advanced spatial queries like intersections, buffers, and distances.
+
+
+# Why Use PostGIS?
+
+
+## Key Benefits
+
+1. **GIS Functionality**: Brings Geographic Information System (GIS) capabilities to PostgreSQL.  
+2. **Spatial Indexing**: Optimized for geospatial queries.  
+3. **Integration**: Works seamlessly with GIS tools like QGIS and GeoServer.  
+
+
+# Features of PostGIS
+
+## 1. Spatial Data Types
+
+- Supports **geometry** and **geography** data types.
+- Example:
+  ```sql
+  CREATE TABLE locations (
+      id SERIAL PRIMARY KEY,
+      name TEXT,
+      geom GEOMETRY(Point, 4326)
+  );
+  ```
+
+## 2. Spatial Functions
+
+- Examples:
+  - `ST_Distance`: Calculates the distance between two points.
+  - `ST_Within`: Checks if a geometry is within another.
+
+  ```sql
+  SELECT ST_Distance(
+      ST_Point(10, 10),
+      ST_Point(15, 15)
+  );
+  ```
+
+- Finds all cities within 5 km of a given point.
+
+  ```sql
+  SELECT name FROM cities
+WHERE ST_DWithin(
+    location, ST_Point(77.5946, 12.9716)::geography, 5000
+);
+    ```
+
+### 3. Spatial Indexing
+
+- GiST Index: Generalized index for geometry data.
+- Improves performance of spatial queries.
+
+```sql
+CREATE INDEX idx_cities_location
+ON cities USING GIST(location);
+```
+
+# Use Cases
+
+## 1. Urban Planning
+  - Analyze proximity of facilities like hospitals and schools.
+ 
+```sql
+SELECT name FROM parks
+WHERE ST_DWithin(
+    geom, ST_Point(10, 10)::geometry, 2000
+);
+```
+
+## 2. Disaster Management
+  - Identify vulnerable areas during floods or earthquakes.
+
+## 3. Logistics
+  - Route optimization and tracking using spatial queries.
+```sql
+SELECT ST_AsText(ST_LineMerge(route_geom))
+FROM routes
+WHERE vehicle_id = 101;
+```
+
+# Advanced Concepts
+
+## Raster Data Support
+
+- Raster data is stored as a grid of cells.
+- Each cell contains a value representing the elevation.
+- PostGIS supports raster data using the Raster Data Type (RDT).
+
+```sql
+SELECT ST_Value(rast, ST_Point(10, 10))
+FROM elevation_data;
+```
+
+## Topology Preserving Operations
+
+- Topology preserving operations are used to analyze and manipulate spatial data.
+- Examples:
+  - Union: Combines two geometries into one.
+  - Difference: Removes parts of one geometry from another.
+  - Intersection: Finds the common parts of two geometries.
+
+
+
+# PostGIS Integration
+
+## Tools and Libraries
+
+- **QGIS**: Visualization and analysis.  
+- **GeoServer**: Web mapping services.  
+- **Leaflet.js**: Interactive maps in web applications.
+
+# Example Workflow
+
+## Step-by-Step
+
+1. Install PostGIS:
+   ```sql
+   CREATE EXTENSION postgis;
+   ```
+
+2. Load Data:
+   ```sql
+   INSERT INTO locations (name, geom)
+   VALUES ('Park', ST_Point(12.9716, 77.5946));
+   ```
+
+3. Query Data:
+   ```sql
+   SELECT name FROM locations
+   WHERE ST_Within(
+       geom, ST_Buffer(ST_Point(12.9716, 77.5946), 10)
+   );
+   ```

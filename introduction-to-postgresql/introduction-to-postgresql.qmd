@@ -1,0 +1,198 @@
+---
+title: "Introduction to PostgreSQL 🐘"
+subtitle: "The Advanced Open-Source Database System"
+author: "Krishna Lodha"
+format:
+  revealjs:
+    footer: "https://learngisonline.com/postgis/"
+--- 
+## What is PostgreSQL?
+
+::: {.incremental}
+- **PostgreSQL** is a powerful, open-source **Relational Database Management System (RDBMS)**.
+- Known for its focus on:
+  - **Standards compliance** (SQL:2016).
+  - **Extensibility** (custom types, functions, operators).
+  - **Reliability** (ACID transactions, WAL).
+:::
+
+## Key Features
+1. Multi-Version Concurrency Control (**MVCC**).
+2. Native **JSON/JSONB** support for semi-structured data.
+3. Advanced indexing options (**B-Tree**, **GiST**, **GIN**, **BRIN**).
+4. Comprehensive extensions like **PostGIS** for spatial data.
+
+**Fact**: PostgreSQL is used by major companies like Instagram, Apple, and Reddit.
+
+# PostgreSQL Architecture
+
+
+## Key Components
+- **Client-Server Model**:
+  - `psql`: Command-line client.
+  - APIs: JDBC, ODBC, etc.
+- **Postmaster Process**:
+  - Manages database sessions.
+- **Shared Buffers**:
+  - Memory caching for faster reads/writes.
+- **WAL (Write-Ahead Logging)**:
+  - Ensures durability and crash recovery.
+
+
+## Simplified Flow:
+1. **Client sends query** ➡️
+2. **Postmaster receives and parses** ➡️
+3. **Executor processes** ➡️
+4. **Storage engine writes to disk**.
+
+> Example: 
+When you execute:
+```sql
+SELECT * FROM users WHERE id = 1;
+
+```
+
+
+# Key Features of PostgreSQL
+
+
+
+## 1. **Data Integrity and ACID Compliance**
+- Ensures **atomicity**, **consistency**, **isolation**, and **durability** in transactions.
+
+**Example: A Bank Transfer**
+```sql
+BEGIN;
+
+UPDATE accounts
+SET balance = balance - 500
+WHERE account_id = 1;
+
+UPDATE accounts
+SET balance = balance + 500
+WHERE account_id = 2;
+
+COMMIT;
+``` 
+
+
+## 2. **Extensibility**
+
+Allows custom types, operators, and functions.  
+Supports languages like **PL/pgSQL**, **Python**, and **C**.
+
+**Example: Custom Function**
+```sql
+CREATE FUNCTION get_full_name(first_name TEXT, last_name TEXT)
+RETURNS TEXT AS $$
+BEGIN
+  RETURN first_name || ' ' || last_name;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT get_full_name('John', 'Doe'); -- Output: John Doe
+```
+
+
+## 3. **JSON and JSONB Support**
+
+Stores unstructured data directly in the database.
+
+**Example: JSON Querying**
+```sql
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    order_data JSONB
+);
+
+INSERT INTO orders (order_data)
+VALUES ('{"product": "Laptop", "quantity": 2, "price": 1200}');
+
+SELECT order_data->>'product' AS product FROM orders; -- Output: Laptop
+```
+
+# Indexing in PostgreSQL
+
+## **What is Indexing?**
+
+- An index speeds up data retrieval by reducing disk I/O.
+- PostgreSQL offers multiple indexing techniques for various use cases.
+
+## Common Index Types
+
+1. **B-Tree Index**: Default for equality/inequality queries.
+   - Example:
+     ```sql
+     CREATE INDEX idx_users_name ON users(name);
+     ```
+
+2. **GIN Index**: Optimized for searching within arrays or JSONB.
+   - Example:
+     ```sql
+     CREATE INDEX idx_orders_data ON orders USING GIN (order_data);
+     ```
+
+3. **BRIN Index**: Efficient for large, sequential data.
+   - Example:
+     ```sql
+     CREATE INDEX idx_logs_date ON logs USING BRIN (log_date);
+     ```
+
+#  Performance Tip
+Always analyze the query using `EXPLAIN` to understand the role of indexes.
+
+# PostgreSQL Extensions
+
+## Popular Extensions
+
+::: {.incremental}
+1. **PostGIS**: Geospatial queries and analysis.  
+2. **pg_partman**: Automated table partitioning.  
+3. **TimescaleDB**: Time-series data management.  
+4. **pg_stat_statements**: Query performance tracking.  
+:::
+
+# Real-World Use Cases of PostgreSQL
+
+## 1. **E-commerce**
+
+- Manages product catalogs, inventory, and transactions.  
+- Example:
+  - Amazon-like systems with millions of products.
+
+## 2. **GIS and Mapping**
+
+- Uses **PostGIS** for geospatial data.  
+- Example:
+  ```sql
+  SELECT name FROM locations
+  WHERE ST_Within(
+    geom, ST_Buffer(ST_Point(10, 10), 5)
+  );
+  ```
+
+## 3. **Analytics and Big Data**
+
+- Works with time-series databases (e.g., TimescaleDB).  
+- Example:
+  Monitoring system performance or IoT sensor data.
+
+
+## PostgreSQL vs. Other Databases
+
+
+| Feature              | PostgreSQL             | MySQL | SQLite |
+|----------------------|------------------------|-------|--------|
+| ACID Compliance      | Yes                   | Yes   | Partial|
+| JSON Support         | Yes (JSONB)           | Yes   | Limited|
+| Extensibility        | High                  | Low   | Low    |
+| Geospatial Support   | PostGIS (Advanced)    | Basic | None   |
+| Scalability          | Horizontal & Vertical | Vertical | Limited|
+
+## Why Choose PostgreSQL?
+
+::: {.incremental}
+1. Open-source and free.  
+2. Wide range of applications: E-commerce, analytics, GIS.  
+3. Actively maintained with a strong community.
+:::
